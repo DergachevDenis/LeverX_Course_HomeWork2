@@ -1,4 +1,4 @@
-package com.dergachev.homework2.FarmDog.Exception;
+package com.dergachev.homework2.farmdog.exception;
 
 public class DogException extends Exception{
     public DogException() {

@@ -1,15 +1,15 @@
-package com.dergachev.homework2.FarmDog;
+package com.dergachev.homework2.farmdog;
 
 
-import com.dergachev.homework2.FarmDog.Dog.Dog;
-import com.dergachev.homework2.FarmDog.Exception.DogException;
-import com.dergachev.homework2.FarmDog.Exception.WorkerException;
-import com.dergachev.homework2.FarmDog.Place.Aviaries;
-import com.dergachev.homework2.FarmDog.Place.Canteen;
-import com.dergachev.homework2.FarmDog.Place.TrainingGround;
-import com.dergachev.homework2.FarmDog.Place.VeterinaryClinic;
-import com.dergachev.homework2.FarmDog.Worker.Work;
-import com.dergachev.homework2.FarmDog.Worker.Worker;
+import com.dergachev.homework2.farmdog.dog.Dog;
+import com.dergachev.homework2.farmdog.exception.DogException;
+import com.dergachev.homework2.farmdog.exception.WorkerException;
+import com.dergachev.homework2.farmdog.place.Aviaries;
+import com.dergachev.homework2.farmdog.place.Canteen;
+import com.dergachev.homework2.farmdog.place.TrainingGround;
+import com.dergachev.homework2.farmdog.place.VeterinaryClinic;
+import com.dergachev.homework2.farmdog.worker.Work;
+import com.dergachev.homework2.farmdog.worker.Worker;
 
 
 import java.math.BigDecimal;

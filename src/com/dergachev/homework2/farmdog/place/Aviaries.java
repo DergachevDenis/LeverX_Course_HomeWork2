@@ -1,8 +1,8 @@
-package com.dergachev.homework2.FarmDog.Place;
+package com.dergachev.homework2.farmdog.place;
 
-import com.dergachev.homework2.FarmDog.Exception.WorkerException;
-import com.dergachev.homework2.FarmDog.Worker.Work;
-import com.dergachev.homework2.FarmDog.Worker.Worker;
+import com.dergachev.homework2.farmdog.exception.WorkerException;
+import com.dergachev.homework2.farmdog.worker.Work;
+import com.dergachev.homework2.farmdog.worker.Worker;
 
 public class Aviaries {
     private Worker cleaner;

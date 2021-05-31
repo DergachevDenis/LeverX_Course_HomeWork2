@@ -1,6 +1,6 @@
-package com.dergachev.homework2.FarmDog.Dog;
+package com.dergachev.homework2.farmdog.dog;
 
-import com.dergachev.homework2.FarmDog.Exception.DogException;
+import com.dergachev.homework2.farmdog.exception.DogException;
 
 import java.util.Objects;
 

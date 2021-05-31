@@ -1,6 +1,6 @@
-package com.dergachev.homework2.FarmDog.Worker;
+package com.dergachev.homework2.farmdog.worker;
 
-import com.dergachev.homework2.FarmDog.Exception.WorkerException;
+import com.dergachev.homework2.farmdog.exception.WorkerException;
 
 import java.math.BigDecimal;
 import java.util.Objects;
