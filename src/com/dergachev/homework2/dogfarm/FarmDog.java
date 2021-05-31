@@ -1,15 +1,15 @@
-package com.dergachev.homework2.farmdog;
+package com.dergachev.homework2.dogfarm;
 
 
-import com.dergachev.homework2.farmdog.dog.Dog;
-import com.dergachev.homework2.farmdog.exception.DogException;
-import com.dergachev.homework2.farmdog.exception.WorkerException;
-import com.dergachev.homework2.farmdog.place.Aviaries;
-import com.dergachev.homework2.farmdog.place.Canteen;
-import com.dergachev.homework2.farmdog.place.TrainingGround;
-import com.dergachev.homework2.farmdog.place.VeterinaryClinic;
-import com.dergachev.homework2.farmdog.worker.Work;
-import com.dergachev.homework2.farmdog.worker.Worker;
+import com.dergachev.homework2.dogfarm.dog.Dog;
+import com.dergachev.homework2.dogfarm.exception.DogException;
+import com.dergachev.homework2.dogfarm.exception.WorkerException;
+import com.dergachev.homework2.dogfarm.place.Aviaries;
+import com.dergachev.homework2.dogfarm.place.Canteen;
+import com.dergachev.homework2.dogfarm.place.TrainingGround;
+import com.dergachev.homework2.dogfarm.place.VeterinaryClinic;
+import com.dergachev.homework2.dogfarm.worker.Work;
+import com.dergachev.homework2.dogfarm.worker.Worker;
 
 
 import java.math.BigDecimal;
@@ -28,7 +28,7 @@ public class FarmDog {
     public FarmDog() {
     }
 
-    public void startFarmDog() {
+    public void doOneDay() {
         initFarmDog();
         initDogList();
 
@@ -55,7 +55,7 @@ public class FarmDog {
             staff.remove(veterinaryOld);
             staff.add(veterinary);
         } catch (WorkerException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -66,7 +66,7 @@ public class FarmDog {
             staff.remove(cookOld);
             staff.add(cook);
         } catch (WorkerException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -77,7 +77,7 @@ public class FarmDog {
             staff.remove(cleanerOld);
             staff.add(cleaner);
         } catch (WorkerException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ public class FarmDog {
             staff.remove(trainerOld);
             staff.add(trainer);
         } catch (WorkerException e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -101,7 +101,7 @@ public class FarmDog {
             staff.add(cleaner);
             this.aviaries = new Aviaries(cleaner);
 
-            Worker trainer = new Worker("John", 45, Work.TRAINERS, new BigDecimal(1150.78));
+            Worker trainer = new Worker("John", 45, Work.TRAINER, new BigDecimal(1150.78));
             staff.add(trainer);
             this.trainingGround = new TrainingGround(trainer);
 

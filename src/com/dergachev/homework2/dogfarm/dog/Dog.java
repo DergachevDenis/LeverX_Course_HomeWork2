@@ -1,6 +1,6 @@
-package com.dergachev.homework2.farmdog.dog;
+package com.dergachev.homework2.dogfarm.dog;
 
-import com.dergachev.homework2.farmdog.exception.DogException;
+import com.dergachev.homework2.dogfarm.exception.DogException;
 
 import java.util.Objects;
 
@@ -10,11 +10,11 @@ public class Dog {
     private Age age;
     private String work = "unemployed";
     private boolean isHungry;
-    private boolean isTraining;
+    private boolean isTrained;
     private boolean isHealthy;
 
 
-    public Dog(String name, int yearsOld, String work, boolean isHungry, boolean isTraining, boolean isHealthy) throws DogException {
+    public Dog(String name, int yearsOld, String work, boolean isHungry, boolean isTrained, boolean isHealthy) throws DogException {
         this.name = name;
         if(yearsOld<0){
             throw new DogException("The age of the dog cannot be negative");
@@ -22,13 +22,13 @@ public class Dog {
         this.yearsOld = yearsOld;
         setAge(yearsOld);
         this.isHungry = isHungry;
-        this.isTraining = isTraining;
+        this.isTrained = isTrained;
         this.isHealthy = isHealthy;
         if (age == Age.ADULTDOG) {
             this.work = work;
         }
     }
-    public Dog(String name, int yearsOld, boolean isHungry, boolean isTraining, boolean isHealthy) throws DogException {
+    public Dog(String name, int yearsOld, boolean isHungry, boolean isTrained, boolean isHealthy) throws DogException {
         this.name = name;
         if(yearsOld<0){
             throw new DogException("The age of the dog cannot be negative");
@@ -36,7 +36,7 @@ public class Dog {
         this.yearsOld = yearsOld;
         setAge(yearsOld);
         this.isHungry = isHungry;
-        this.isTraining = isTraining;
+        this.isTrained = isTrained;
         this.isHealthy = isHealthy;
     }
 
@@ -73,12 +73,12 @@ public class Dog {
         isHungry = hungry;
     }
 
-    public boolean isTraining() {
-        return isTraining;
+    public boolean isTrained() {
+        return isTrained;
     }
 
-    public void setTraining(boolean training) {
-        isTraining = training;
+    public void setTrained(boolean trained) {
+        isTrained = trained;
     }
 
     public boolean isHealthy() {
@@ -102,17 +102,17 @@ public class Dog {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dog dog = (Dog) o;
-        return isTraining == dog.isTraining && Objects.equals(name, dog.name) && age == dog.age;
+        return isTrained == dog.isTrained && Objects.equals(name, dog.name) && age == dog.age;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, isTraining);
+        return Objects.hash(name, age, isTrained);
     }
 
     @Override
     public String toString() {
-        StringBuffer result = new StringBuffer("Dog name: " + this.name + "\nAge: " + this.age + "\n");
+        StringBuilder result = new StringBuilder("Dog name: " + this.name + "\nAge: " + this.age + "\n");
         if (this.isHungry) {
             result.append("Dog hungry, ");
         } else {
@@ -123,7 +123,7 @@ public class Dog {
         } else {
             result.append("not healthy, ");
         }
-        if (this.isTraining) {
+        if (this.isTrained) {
             result.append("training.");
         } else {
             result.append("not training.");

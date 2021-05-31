@@ -1,9 +1,9 @@
-package com.dergachev.homework2.farmdog.place;
+package com.dergachev.homework2.dogfarm.place;
 
-import com.dergachev.homework2.farmdog.dog.Dog;
-import com.dergachev.homework2.farmdog.exception.WorkerException;
-import com.dergachev.homework2.farmdog.worker.Work;
-import com.dergachev.homework2.farmdog.worker.Worker;
+import com.dergachev.homework2.dogfarm.dog.Dog;
+import com.dergachev.homework2.dogfarm.exception.WorkerException;
+import com.dergachev.homework2.dogfarm.worker.Work;
+import com.dergachev.homework2.dogfarm.worker.Worker;
 
 import java.util.List;
 
