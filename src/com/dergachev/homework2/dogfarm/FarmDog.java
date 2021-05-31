@@ -14,16 +14,17 @@ import com.dergachev.homework2.dogfarm.worker.Worker;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FarmDog {
-    private ArrayList<Dog> dogs;
+    private List<Dog> dogs;
 
     private Aviaries aviaries;
     private TrainingGround trainingGround;
     private VeterinaryClinic veterinaryClinic;
     private Canteen canteen;
 
-    private ArrayList<Worker> staff;
+    private List<Worker> staff;
 
     public FarmDog() {
     }
