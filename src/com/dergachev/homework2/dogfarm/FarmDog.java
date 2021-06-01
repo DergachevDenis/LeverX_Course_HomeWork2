@@ -2,12 +2,9 @@ package com.dergachev.homework2.dogfarm;
 
 
 import com.dergachev.homework2.dogfarm.dog.Dog;
-import com.dergachev.homework2.dogfarm.exception.DogException;
-import com.dergachev.homework2.dogfarm.exception.WorkerException;
-import com.dergachev.homework2.dogfarm.place.Aviaries;
-import com.dergachev.homework2.dogfarm.place.Canteen;
-import com.dergachev.homework2.dogfarm.place.TrainingGround;
-import com.dergachev.homework2.dogfarm.place.VeterinaryClinic;
+import com.dergachev.homework2.dogfarm.dog.PlaceOFWork;
+import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.place.*;
 import com.dergachev.homework2.dogfarm.worker.Work;
 import com.dergachev.homework2.dogfarm.worker.Worker;
 
@@ -23,6 +20,7 @@ public class FarmDog {
     private TrainingGround trainingGround;
     private VeterinaryClinic veterinaryClinic;
     private Canteen canteen;
+    private DogWork dogWork;
 
     private List<Worker> staff;
 
@@ -36,7 +34,7 @@ public class FarmDog {
         canteen.feedingDogs(dogs);
         veterinaryClinic.inspectionDogs(dogs);
         aviaries.clearAviaries();
-        goToWork();
+        dogWork.goToWork(dogs,trainingGround);
         canteen.feedingDogs(dogs);
         aviaries.setClear(false);
 
@@ -114,6 +112,7 @@ public class FarmDog {
             staff.add(cook);
             this.canteen = new Canteen(cook);
 
+            this.dogWork = new DogWork();
         } catch (NullPointerException | WorkerException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
@@ -124,12 +123,12 @@ public class FarmDog {
     private void initDogList() {
         dogs = new ArrayList<>();
         try {
-            Dog dog1 = new Dog("Barbos", 7, "Police", false, true, true);
-            Dog dog2 = new Dog("Sharik", 9, true, true, false);
-            Dog dog3 = new Dog("Gav", 1, true, false, true);
-            Dog dog4 = new Dog("Bim", 1, false, false, false);
-            Dog dog5 = new Dog("Palkan", 4, "101", true, true, false);
-            Dog dog6 = new Dog("Pes", 10, false, true, true);
+            Dog dog1 = new Dog("Barbos", "12.01.2017", PlaceOFWork.POLICE, false, true, true);
+            Dog dog2 = new Dog("Sharik", "19.07.2014", true, true, false);
+            Dog dog3 = new Dog("Gav", "12.04.2020", true, false, true);
+            Dog dog4 = new Dog("Bim", "03.08.2020", false, false, false);
+            Dog dog5 = new Dog("Palkan", "31.08.2018", PlaceOFWork.EMERGENCY, true, true, false);
+            Dog dog6 = new Dog("Pes", "25.07.2010", false, true, true);
 
             dogs.add(dog1);
             dogs.add(dog2);
@@ -138,34 +137,10 @@ public class FarmDog {
             dogs.add(dog5);
             dogs.add(dog6);
 
-        } catch (DogException e) {
+        } catch (DateException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void goToWork() {
-        for (Dog dog : dogs) {
-            switch (dog.getAge()) {
-                case PUPPY:
-                    try {
-                        trainingGround.train(dog);
-                        dog.setHungry(true);
-                    } catch (DogException e) {
-                        System.out.println(e.getMessage());;
-                    }
-                    break;
-                case ADULTDOG:
-                    System.out.println("The " + dog.getName() + " dog went to work for the " + dog.getWork() + ".");
-                    dog.setHungry(true);
-                    break;
-                case ELDERLYDOG:
-                    System.out.println("Dog " + dog.getName() + " resting.");
-                    dog.setHungry(true);
-                    break;
-            }
-        }
-        System.out.println();
     }
 }

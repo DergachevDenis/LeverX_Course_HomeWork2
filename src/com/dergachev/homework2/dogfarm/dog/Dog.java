@@ -1,26 +1,35 @@
 package com.dergachev.homework2.dogfarm.dog;
 
-import com.dergachev.homework2.dogfarm.exception.DogException;
+import com.dergachev.homework2.dogfarm.util.date.DateUtil;
+import com.dergachev.homework2.dogfarm.util.exception.*;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Dog {
+
+    private DateUtil dateUtil = new DateUtil();
+
     private String name;
+    private LocalDate birthday;
     private int yearsOld;
     private Age age;
-    private String work = "unemployed";
+    private PlaceOFWork work = PlaceOFWork.UNEMPLOYED;
     private boolean isHungry;
     private boolean isTrained;
     private boolean isHealthy;
 
+    public Dog() {
+    }
 
-    public Dog(String name, int yearsOld, String work, boolean isHungry, boolean isTrained, boolean isHealthy) throws DogException {
+    public Dog(String name, String birthday, PlaceOFWork work, boolean isHungry, boolean isTrained, boolean isHealthy) throws DateException {
         this.name = name;
-        if(yearsOld<0){
-            throw new DogException("The age of the dog cannot be negative");
+        if(!dateUtil.validDate(birthday)){
+            throw new DateException("Please, set birthday in format "+ DateUtil.DATE_PATTERN);
         }
-        this.yearsOld = yearsOld;
-        setAge(yearsOld);
+        this.birthday=dateUtil.parse(birthday);
+        this.yearsOld = dateUtil.getYearsOld(this.birthday);
+        setAge(this.yearsOld);
         this.isHungry = isHungry;
         this.isTrained = isTrained;
         this.isHealthy = isHealthy;
@@ -28,13 +37,14 @@ public class Dog {
             this.work = work;
         }
     }
-    public Dog(String name, int yearsOld, boolean isHungry, boolean isTrained, boolean isHealthy) throws DogException {
+    public Dog(String name, String birthday, boolean isHungry, boolean isTrained, boolean isHealthy) throws DateException {
         this.name = name;
-        if(yearsOld<0){
-            throw new DogException("The age of the dog cannot be negative");
+        if(!dateUtil.validDate(birthday)){
+            throw new DateException("Please, set birthday in format "+ DateUtil.DATE_PATTERN);
         }
-        this.yearsOld = yearsOld;
-        setAge(yearsOld);
+        this.birthday=dateUtil.parse(birthday);
+        this.yearsOld = dateUtil.getYearsOld(this.birthday);
+        setAge(this.yearsOld);
         this.isHungry = isHungry;
         this.isTrained = isTrained;
         this.isHealthy = isHealthy;
@@ -89,11 +99,11 @@ public class Dog {
         isHealthy = healthy;
     }
 
-    public String getWork() {
+    public PlaceOFWork getWork() {
         return work;
     }
 
-    public void setWork(String work) {
+    public void setWork(PlaceOFWork work) {
         this.work = work;
     }
 
@@ -112,7 +122,7 @@ public class Dog {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Dog name: " + this.name + "\nAge: " + this.age + "\n");
+        StringBuilder result = new StringBuilder("Dog name: " + this.name +"\nBithday: "+ this.birthday +"\nYears: "+ this.yearsOld +  "\nAge: " + this.age + "\n");
         if (this.isHungry) {
             result.append("Dog hungry, ");
         } else {

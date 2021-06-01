@@ -2,14 +2,16 @@ package com.dergachev.homework2.dogfarm.place;
 
 import com.dergachev.homework2.dogfarm.dog.Age;
 import com.dergachev.homework2.dogfarm.dog.Dog;
-import com.dergachev.homework2.dogfarm.exception.DogException;
-import com.dergachev.homework2.dogfarm.exception.WorkerException;
+import com.dergachev.homework2.dogfarm.util.exception.*;
 import com.dergachev.homework2.dogfarm.worker.Work;
 import com.dergachev.homework2.dogfarm.worker.Worker;
 
 public class TrainingGround {
 
     private Worker trainer;
+
+    public TrainingGround() {
+    }
 
     public TrainingGround(Worker trainer) throws WorkerException {
         validTrainer(trainer);
@@ -28,7 +30,7 @@ public class TrainingGround {
     public void train(Dog puppy) throws DogException {
         validDog(puppy);
         System.out.println("Trainer " + trainer.getName() + " trains a " + puppy.getName() + " puppy.");
-        puppy.setHungry(true);
+        puppy.setTrained(true);
     }
 
     private void validTrainer(Worker trainer) throws WorkerException {

@@ -1,7 +1,7 @@
 package com.dergachev.homework2.dogfarm.place;
 
 import com.dergachev.homework2.dogfarm.dog.Dog;
-import com.dergachev.homework2.dogfarm.exception.WorkerException;
+import com.dergachev.homework2.dogfarm.util.exception.*;
 import com.dergachev.homework2.dogfarm.worker.Work;
 import com.dergachev.homework2.dogfarm.worker.Worker;
 
@@ -10,6 +10,9 @@ import java.util.List;
 public class Canteen {
 
     private Worker cook;
+
+    public Canteen() {
+    }
 
     public Canteen(Worker cook) throws WorkerException {
         validTrainer(cook);
