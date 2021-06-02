@@ -1,7 +1,9 @@
 package com.dergachev.homework2.dogfarm;
 
 
+import com.dergachev.homework2.dogfarm.dog.Age;
 import com.dergachev.homework2.dogfarm.dog.Dog;
+import com.dergachev.homework2.dogfarm.dog.DogList;
 import com.dergachev.homework2.dogfarm.dog.PlaceOFWork;
 import com.dergachev.homework2.dogfarm.util.myexception.*;
 import com.dergachev.homework2.dogfarm.place.*;
@@ -10,11 +12,11 @@ import com.dergachev.homework2.dogfarm.worker.Worker;
 
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class FarmDog {
-    private List<Dog> dogs;
+    private DogList dogs;
 
     private Aviaries aviaries;
     private TrainingGround trainingGround;
@@ -29,22 +31,44 @@ public class FarmDog {
 
     public void doOneDay() {
         initFarmDog();
-        initDogList();
 
-        canteen.feedingDogs(dogs);
-        veterinaryClinic.inspectionDogs(dogs);
+        canteen.feedingDogs(dogs.getDogList());
+        veterinaryClinic.inspectionDogs(dogs.getDogList());
         aviaries.clearAviaries();
-        dogWork.goToWork(dogs, trainingGround);
-        canteen.feedingDogs(dogs);
+        dogWork.goToWork(dogs.getDogList(), trainingGround);
+        canteen.feedingDogs(dogs.getDogList());
         aviaries.setClear(false);
 
     }
 
-    public void addDog(Dog dog) {
+    public void addDogInList(Dog dog) {
         if (dog == null) {
             throw new NullPointerException();
         }
-        dogs.add(dog);
+        dogs.addDog(dog);
+    }
+
+    public List<Dog> getSortedDogListByName() {
+        return dogs.getSortedDogListByName();
+    }
+
+    public List<Dog> getSortedDogListByAge() {
+        return dogs.getSortedDogListByAge();
+    }
+
+    public List<Dog> getListAgeDog(Age age) throws DogException {
+        if (age == null) {
+            throw new DogException("please indicate age: " +Age.PUPPY+", "+Age.ADULTDOG+", "+Age.ELDERLYDOG+".");
+        }
+        return dogs.getListAgeDog(age);
+    }
+
+    public Map<Age,List<Dog>> getMapDogByAge(){
+        return dogs.getMapDogByAge();
+    }
+
+    public Map<PlaceOFWork,List<Dog>> getMapDogByWork(){
+        return dogs.getMapDogByWork();
     }
 
     public void changeVeterinary(Worker veterinary) {
@@ -93,6 +117,7 @@ public class FarmDog {
 
 
     private void initFarmDog() {
+        dogs = new DogList();
         staff = new ArrayList<>();
 
         try {
@@ -117,29 +142,6 @@ public class FarmDog {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private void initDogList() {
-        dogs = new ArrayList<>();
-
-        try {
-            Dog dog1 = new Dog("Barbos", "12.01.2017", PlaceOFWork.POLICE, false, true, true);
-            Dog dog2 = new Dog("Sharik", "19.07.2014", true, true, false);
-            Dog dog3 = new Dog("Gav", "12.04.2020", true, false, true);
-            Dog dog4 = new Dog("Bim", "03.08.2020", false, false, false);
-            Dog dog5 = new Dog("Palkan", "31.08.2018", PlaceOFWork.EMERGENCY, true, true, false);
-            Dog dog6 = new Dog("Pes", "25.07.2010", false, true, true);
-
-            dogs.add(dog1);
-            dogs.add(dog2);
-            dogs.add(dog3);
-            dogs.add(dog4);
-            dogs.add(dog5);
-            dogs.add(dog6);
-
-        } catch (DateException e) {
-            System.out.println(e.getMessage());
         }
     }
 }
