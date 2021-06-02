@@ -1,4 +1,4 @@
-package com.dergachev.homework2.dogfarm.util.exception;
+package com.dergachev.homework2.dogfarm.util.myexception;
 
 public class DateException extends Exception {
     public DateException() {
@@ -10,7 +10,7 @@ public class DateException extends Exception {
 
     @Override
     public String toString() {
-        return "DogException{message = " + getMessage() + "}";
+        return "DateException{message = " + getMessage() + "}";
     }
 }
 

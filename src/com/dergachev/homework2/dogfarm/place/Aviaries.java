@@ -1,6 +1,6 @@
 package com.dergachev.homework2.dogfarm.place;
 
-import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.util.myexception.WorkerException;
 import com.dergachev.homework2.dogfarm.worker.Work;
 import com.dergachev.homework2.dogfarm.worker.Worker;
 
@@ -47,7 +47,7 @@ public class Aviaries {
             throw new NullPointerException("There is a cleaner to work here");
         }
         else if (cleaner.getWork() != Work.CLEANER) {
-            throw new WorkerException("It is not the responsibility of the " + cleaner.getWork() + " to clean the enclosures");
+            throw new WorkerException( "It is not the responsibility of the " + cleaner.getWork() + " to clean the enclosures");
         }
     }
 }

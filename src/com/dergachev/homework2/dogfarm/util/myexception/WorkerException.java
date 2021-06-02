@@ -1,4 +1,4 @@
-package com.dergachev.homework2.dogfarm.util.exception;
+package com.dergachev.homework2.dogfarm.util.myexception;
 
 public class WorkerException extends Exception{
 

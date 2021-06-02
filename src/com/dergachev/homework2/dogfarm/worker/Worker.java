@@ -1,6 +1,6 @@
 package com.dergachev.homework2.dogfarm.worker;
 
-import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.util.myexception.*;
 
 import java.math.BigDecimal;
 import java.util.Objects;

@@ -3,7 +3,7 @@ package com.dergachev.homework2.dogfarm;
 
 import com.dergachev.homework2.dogfarm.dog.Dog;
 import com.dergachev.homework2.dogfarm.dog.PlaceOFWork;
-import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.util.myexception.*;
 import com.dergachev.homework2.dogfarm.place.*;
 import com.dergachev.homework2.dogfarm.worker.Work;
 import com.dergachev.homework2.dogfarm.worker.Worker;
@@ -34,20 +34,20 @@ public class FarmDog {
         canteen.feedingDogs(dogs);
         veterinaryClinic.inspectionDogs(dogs);
         aviaries.clearAviaries();
-        dogWork.goToWork(dogs,trainingGround);
+        dogWork.goToWork(dogs, trainingGround);
         canteen.feedingDogs(dogs);
         aviaries.setClear(false);
 
     }
 
-    public void addDog(Dog dog){
-        if(dog==null){
+    public void addDog(Dog dog) {
+        if (dog == null) {
             throw new NullPointerException();
         }
         dogs.add(dog);
     }
 
-    public void changeVeterinary(Worker veterinary){
+    public void changeVeterinary(Worker veterinary) {
         Worker veterinaryOld = veterinaryClinic.getVeterinary();
         try {
             veterinaryClinic.setVeterinary(veterinary);
@@ -58,7 +58,7 @@ public class FarmDog {
         }
     }
 
-    public void changeCook(Worker cook){
+    public void changeCook(Worker cook) {
         Worker cookOld = canteen.getCook();
         try {
             canteen.setCook(cook);
@@ -69,7 +69,7 @@ public class FarmDog {
         }
     }
 
-    public void changeCleaner(Worker cleaner){
+    public void changeCleaner(Worker cleaner) {
         Worker cleanerOld = aviaries.getCleaner();
         try {
             aviaries.setCleaner(cleaner);
@@ -80,7 +80,7 @@ public class FarmDog {
         }
     }
 
-    public void changeTrainer(Worker trainer){
+    public void changeTrainer(Worker trainer) {
         Worker trainerOld = trainingGround.getTrainer();
         try {
             trainingGround.setTrainer(trainer);
@@ -122,6 +122,7 @@ public class FarmDog {
 
     private void initDogList() {
         dogs = new ArrayList<>();
+
         try {
             Dog dog1 = new Dog("Barbos", "12.01.2017", PlaceOFWork.POLICE, false, true, true);
             Dog dog2 = new Dog("Sharik", "19.07.2014", true, true, false);
@@ -139,8 +140,6 @@ public class FarmDog {
 
         } catch (DateException e) {
             System.out.println(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

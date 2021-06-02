@@ -1,7 +1,7 @@
 package com.dergachev.homework2.dogfarm.dog;
 
 import com.dergachev.homework2.dogfarm.util.date.DateUtil;
-import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.util.myexception.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -63,13 +63,6 @@ public class Dog {
         return yearsOld;
     }
 
-    public void setYearsOld(int yearsOld) throws DogException {
-        if(yearsOld<0){
-            throw new DogException("The age of the dog cannot be negative");
-        }
-        this.yearsOld = yearsOld;
-        setAge(yearsOld);
-    }
 
     public Age getAge() {
         return age;

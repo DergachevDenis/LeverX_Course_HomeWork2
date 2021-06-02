@@ -1,7 +1,7 @@
 package com.dergachev.homework2.dogfarm.place;
 
 import com.dergachev.homework2.dogfarm.dog.Dog;
-import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.util.myexception.*;
 
 import java.util.List;
 

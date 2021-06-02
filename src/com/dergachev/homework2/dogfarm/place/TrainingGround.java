@@ -2,7 +2,7 @@ package com.dergachev.homework2.dogfarm.place;
 
 import com.dergachev.homework2.dogfarm.dog.Age;
 import com.dergachev.homework2.dogfarm.dog.Dog;
-import com.dergachev.homework2.dogfarm.util.exception.*;
+import com.dergachev.homework2.dogfarm.util.myexception.*;
 import com.dergachev.homework2.dogfarm.worker.Work;
 import com.dergachev.homework2.dogfarm.worker.Worker;
 
@@ -46,7 +46,7 @@ public class TrainingGround {
             throw new NullPointerException("Need someone to train.");
         }
         if (puppy.getAge() != Age.PUPPY) {
-            throw new DogException("Only puppies are trained here.");
+           throw new DogException("Only puppies are trained here.");
         }
     }
 }
