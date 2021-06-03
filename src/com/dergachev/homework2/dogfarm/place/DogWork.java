@@ -11,9 +11,7 @@ public class DogWork {
     }
 
     public void goToWork(List<Dog> dogs, TrainingGround trainingGround) {
-        if(dogs == null || trainingGround == null){
-            throw new NullPointerException();
-        }
+        validListAndTrainer(dogs, trainingGround);
         for (Dog dog : dogs) {
             switch (dog.getAge()) {
                 case PUPPY:
@@ -21,7 +19,7 @@ public class DogWork {
                         trainingGround.train(dog);
                         dog.setHungry(true);
                     } catch (DogException e) {
-                        System.out.println(e.getMessage());;
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case ADULTDOG:
@@ -35,6 +33,12 @@ public class DogWork {
             }
         }
         System.out.println();
+    }
+
+    private void validListAndTrainer(List<Dog> dogs, TrainingGround trainingGround)  {
+        if(dogs == null || trainingGround == null || dogs.isEmpty() ){
+            throw new NullPointerException("Need someone to work.");
+        }
     }
 
 }

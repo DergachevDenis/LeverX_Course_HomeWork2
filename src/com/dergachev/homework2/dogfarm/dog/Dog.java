@@ -3,12 +3,13 @@ package com.dergachev.homework2.dogfarm.dog;
 import com.dergachev.homework2.dogfarm.util.date.DateUtil;
 import com.dergachev.homework2.dogfarm.util.myexception.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Dog {
+public class Dog implements Serializable {
 
-    private DateUtil dateUtil = new DateUtil();
+    private transient DateUtil dateUtil = new DateUtil();
 
     private String name;
     private LocalDate birthday;
@@ -115,7 +116,8 @@ public class Dog {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Dog name: " + this.name +"\nBithday: "+ this.birthday +"\nYears: "+ this.yearsOld +  "\nAge: " + this.age + "\n");
+        StringBuilder result = new StringBuilder("Dog name: " + this.name +"\nBirthday: "+ this.birthday +"\nYears: "+
+                +this.yearsOld +  "\nAge: " + this.age + "\nWork: "+this.work+"\n");
         if (this.isHungry) {
             result.append("Dog hungry, ");
         } else {

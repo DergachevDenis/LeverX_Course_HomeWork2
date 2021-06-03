@@ -1,0 +1,112 @@
+Dog name: Barbos
+Birthday: 2017-01-12
+Years: 4
+Age: ADULTDOG
+Work: POLICE
+Dog not hungry, healthy, training.
+
+Dog name: Sharik
+Birthday: 2014-07-19
+Years: 6
+Age: ADULTDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Gav
+Birthday: 2020-04-12
+Years: 1
+Age: PUPPY
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Bim
+Birthday: 2020-08-03
+Years: 0
+Age: PUPPY
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Palkan
+Birthday: 2018-08-31
+Years: 2
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Pes
+Birthday: 2010-07-25
+Years: 10
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog not hungry, healthy, training.
+
+Dog name: Chik
+Birthday: 2011-12-12
+Years: 9
+Age: ELDERLYDOG
+Work: UNEMPLOYED
+Dog hungry, healthy, training.
+
