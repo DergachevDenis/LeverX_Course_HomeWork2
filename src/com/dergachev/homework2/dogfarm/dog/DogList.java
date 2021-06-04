@@ -43,9 +43,6 @@ public class DogList {
     }
 
     public void addDog(Dog dog) {
-        if (dog == null) {
-            throw new NullPointerException("Need dog");
-        }
         this.dogList.add(dog);
         saveDogListInFile();
     }
@@ -63,6 +60,10 @@ public class DogList {
         return dogList.stream().filter(e -> e.getName().equalsIgnoreCase(dogName)).findFirst().orElseThrow(() -> new DogException("No dogs found with this name"));
     }
 
+    public void updateDog(Dog updateDog) throws DogException {
+        removeDogByName(updateDog.getName());
+        addDog(updateDog);
+    }
 
     public List<Dog> getSortedDogListByName() {
         return Optional.of(dogList.stream().sorted(Comparator.comparing(Dog::getName)).collect(Collectors.toList())).orElse(new ArrayList<>());
@@ -92,7 +93,7 @@ public class DogList {
         return Optional.of(dogList.stream().collect(Collectors.groupingBy(Dog::getAge))).orElse(new HashMap<>());
     }
 
-    public Map<PlaceOFWork, List<Dog>> getMapDogByWork() {
+    public Map<PlaceOFWorkDog, List<Dog>> getMapDogByWork() {
         return Optional.of(dogList.stream().collect(Collectors.groupingBy(Dog::getWork))).orElse(new HashMap<>());
     }
 
@@ -161,21 +162,3 @@ public class DogList {
     }
 }
 
-//        try {
-//            Dog dog1 = new Dog("Barbos", "12.01.2017", PlaceOFWork.POLICE, false, true, true);
-//            Dog dog2 = new Dog("Sharik", "19.07.2014", true, true, false);
-//            Dog dog3 = new Dog("Gav", "12.04.2020", true, false, true);
-//            Dog dog4 = new Dog("Bim", "03.08.2020", false, false, false);
-//            Dog dog5 = new Dog("Palkan", "31.08.2018", PlaceOFWork.EMERGENCY, true, true, false);
-//            Dog dog6 = new Dog("Pes", "25.07.2010", false, true, true);
-//
-//            dogList.add(dog1);
-//            dogList.add(dog2);
-//            dogList.add(dog3);
-//            dogList.add(dog4);
-//            dogList.add(dog5);
-//            dogList.add(dog6);
-//
-//        } catch (DateException e) {
-//            System.out.println(e.getMessage());
-//        }

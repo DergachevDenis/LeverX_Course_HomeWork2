@@ -1,10 +1,10 @@
 package com.dergachev.homework2.dogfarm.place.canteen;
 
 import com.dergachev.homework2.dogfarm.dog.Age;
-import com.dergachev.homework2.dogfarm.place.canteen.Feed.Feed;
-import com.dergachev.homework2.dogfarm.place.canteen.Feed.FeedForAdultDogs;
-import com.dergachev.homework2.dogfarm.place.canteen.Feed.FeedForElderlyDogs;
-import com.dergachev.homework2.dogfarm.place.canteen.Feed.FeedForPuppies;
+import com.dergachev.homework2.dogfarm.place.canteen.feed.Feed;
+import com.dergachev.homework2.dogfarm.place.canteen.feed.FeedForAdultDogs;
+import com.dergachev.homework2.dogfarm.place.canteen.feed.FeedForElderlyDogs;
+import com.dergachev.homework2.dogfarm.place.canteen.feed.FeedForPuppies;
 
 public class Kitchen {
 

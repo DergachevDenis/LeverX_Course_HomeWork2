@@ -16,6 +16,7 @@ public class Veterinary extends Worker implements Work{
 
     @Override
     public String work(Dog dog) {
+        dog.setHealthy(true);
         return "Poor thing, let me help you "+dog.getName();
     }
 }

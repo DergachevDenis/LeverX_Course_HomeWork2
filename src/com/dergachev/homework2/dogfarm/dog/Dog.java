@@ -15,7 +15,7 @@ public class Dog implements Serializable {
     private LocalDate birthday;
     private int yearsOld;
     private Age age;
-    private PlaceOFWork work = PlaceOFWork.UNEMPLOYED;
+    private PlaceOFWorkDog work;
     private boolean isHungry;
     private boolean isTrained;
     private boolean isHealthy;
@@ -23,47 +23,59 @@ public class Dog implements Serializable {
     public Dog() {
     }
 
-    public Dog(String name, String birthday, PlaceOFWork work, boolean isHungry, boolean isTrained, boolean isHealthy) throws DateException {
-        this.name = name;
-        if(!dateUtil.validDate(birthday)){
-            throw new DateException("Please, set birthday in format "+ DateUtil.DATE_PATTERN);
+    public Dog(String name, String birthday, PlaceOFWorkDog work, boolean isHungry, boolean isTrained, boolean isHealthy) throws DateException {
+        if (name == null) {
+            throw new NullPointerException("Dog need name.");
         }
-        this.birthday=dateUtil.parse(birthday);
+        this.name = name;
+        if (!dateUtil.validDate(birthday)) {
+            throw new DateException("Please, set birthday in format " + DateUtil.DATE_PATTERN);
+        }
+        this.birthday = dateUtil.parse(birthday);
         this.yearsOld = dateUtil.getYearsOld(this.birthday);
         setAge(this.yearsOld);
         this.isHungry = isHungry;
         this.isTrained = isTrained;
         this.isHealthy = isHealthy;
-        if (age == Age.ADULTDOG) {
-            this.work = work;
+
+        if (work == null) {
+            throw new NullPointerException("Dog need work.");
         }
-    }
-    public Dog(String name, String birthday, boolean isHungry, boolean isTrained, boolean isHealthy) throws DateException {
-        this.name = name;
-        if(!dateUtil.validDate(birthday)){
-            throw new DateException("Please, set birthday in format "+ DateUtil.DATE_PATTERN);
-        }
-        this.birthday=dateUtil.parse(birthday);
-        this.yearsOld = dateUtil.getYearsOld(this.birthday);
-        setAge(this.yearsOld);
-        this.isHungry = isHungry;
-        this.isTrained = isTrained;
-        this.isHealthy = isHealthy;
+        this.work = switch (this.age){
+            case PUPPY -> PlaceOFWorkDog.TRAINING;
+            case ADULTDOG -> work;
+            case ELDERLYDOG -> PlaceOFWorkDog.UNEMPLOYED;
+        };
+
     }
 
+    public Dog(String name, String birthday, boolean isHungry, boolean isTrained, boolean isHealthy) throws DateException {
+        validName(name);
+        this.name = name;
+        if (!dateUtil.validDate(birthday)) {
+            throw new DateException("Please, set birthday in format " + DateUtil.DATE_PATTERN);
+        }
+        this.birthday = dateUtil.parse(birthday);
+        this.yearsOld = dateUtil.getYearsOld(this.birthday);
+        setAge(this.yearsOld);
+        this.isHungry = isHungry;
+        this.isTrained = isTrained;
+        this.isHealthy = isHealthy;
+
+        this.work = switch (this.age){
+            case PUPPY -> PlaceOFWorkDog.TRAINING;
+            case ADULTDOG, ELDERLYDOG -> PlaceOFWorkDog.UNEMPLOYED;
+        };
+
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getYearsOld() {
         return yearsOld;
     }
-
 
     public Age getAge() {
         return age;
@@ -93,12 +105,28 @@ public class Dog implements Serializable {
         isHealthy = healthy;
     }
 
-    public PlaceOFWork getWork() {
+    public PlaceOFWorkDog getWork() {
         return work;
     }
 
-    public void setWork(PlaceOFWork work) {
-        this.work = work;
+    public void setWork(PlaceOFWorkDog work)  {
+        if (work == null) {
+            throw new NullPointerException("Dog need work.");
+        }
+        this.work = switch (this.age){
+            case PUPPY -> PlaceOFWorkDog.TRAINING;
+            case ADULTDOG -> work;
+            case ELDERLYDOG -> PlaceOFWorkDog.UNEMPLOYED;
+        };
+    }
+
+    public void setBirthday(String birthday) throws DateException {
+        if (!dateUtil.validDate(birthday)) {
+            throw new DateException("Please, set birthday in format " + DateUtil.DATE_PATTERN);
+        }
+        this.birthday = dateUtil.parse(birthday);
+        this.yearsOld = dateUtil.getYearsOld(this.birthday);
+        setAge(this.yearsOld);
     }
 
     @Override
@@ -116,8 +144,8 @@ public class Dog implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Dog name: " + this.name +"\nBirthday: "+ this.birthday +"\nYears: "+
-                +this.yearsOld +  "\nAge: " + this.age + "\nWork: "+this.work+"\n");
+        StringBuilder result = new StringBuilder("Dog name: " + this.name + "\nBirthday: " + this.birthday + "\nYears: " +
+                +this.yearsOld + "\nAge: " + this.age + "\nWork: " + this.work + "\n");
         if (this.isHungry) {
             result.append("Dog hungry, ");
         } else {
@@ -136,15 +164,19 @@ public class Dog implements Serializable {
         return result.toString();
     }
 
+    private void validName(String name) {
+        if (name == null) {
+            throw new NullPointerException("Dog need name.");
+        }
+    }
+
     private void setAge(int yearsOld) {
         if (yearsOld > 2 && yearsOld < 8) {
             this.age = Age.ADULTDOG;
-        }
-        else if (yearsOld <2){
+        } else if (yearsOld < 2) {
             this.age = Age.PUPPY;
-        }
-        else {
-            this.age=Age.ELDERLYDOG;
+        } else {
+            this.age = Age.ELDERLYDOG;
         }
     }
 }

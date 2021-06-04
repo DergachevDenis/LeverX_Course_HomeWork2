@@ -1,4 +1,4 @@
-package com.dergachev.homework2.dogfarm.place.canteen.Feed;
+package com.dergachev.homework2.dogfarm.place.canteen.feed;
 
 public class FeedForElderlyDogs extends Feed{
     public FeedForElderlyDogs(String feedName) {

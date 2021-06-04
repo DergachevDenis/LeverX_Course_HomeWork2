@@ -1,4 +1,4 @@
-package com.dergachev.homework2.dogfarm.place.canteen.Feed;
+package com.dergachev.homework2.dogfarm.place.canteen.feed;
 
 import java.util.Objects;
 

@@ -5,7 +5,7 @@ import com.dergachev.homework2.dogfarm.util.myexception.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public abstract class Worker {
+public abstract class Worker implements Work {
     private String name;
     private Integer age;
     private BigDecimal salary;

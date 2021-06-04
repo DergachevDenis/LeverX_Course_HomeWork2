@@ -47,7 +47,6 @@ public class VeterinaryClinic {
     }
 
     private void validVetetinary(Worker veterinary) throws WorkerException {
-        System.out.println(veterinary instanceof Veterinary);
         if (veterinary == null) {
             throw new NullPointerException("There is a veterinary to work here.");
         } else if (veterinary.getClass() != Veterinary.class) {

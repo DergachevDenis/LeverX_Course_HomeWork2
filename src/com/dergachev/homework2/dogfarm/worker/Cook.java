@@ -16,8 +16,7 @@ public class Cook extends Worker implements Work{
 
     @Override
     public String work(Dog dog) {
-
-
+        dog.setHungry(false);
         return "Ooo how you lost weight, let me feed you "+dog.getName();
     }
 }

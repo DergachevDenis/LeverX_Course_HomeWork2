@@ -15,6 +15,7 @@ public class Trainer extends Worker implements Work{
 
     @Override
     public String work(Dog dog) {
-        return "Come on! Move, soldier "+dog.getName();
+        dog.setTrained(true);
+        return "Come on! Move, soldier! The workout is not over yet "+dog.getName();
     }
 }
