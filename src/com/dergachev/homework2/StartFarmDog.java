@@ -13,5 +13,6 @@ public class StartFarmDog {
     public static void main(String[] args) {
         FarmDog farmDog = new FarmDog();
         farmDog.doOneDay();
+        farmDog.printListDogInFile("");
     }
 }

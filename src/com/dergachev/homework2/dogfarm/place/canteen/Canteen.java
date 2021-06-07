@@ -50,13 +50,22 @@ public class Canteen {
     public void feedingDogs(List<Dog> dogList) {
         validDogList(dogList);
         long colHungry = 0;
-        colHungry = dogList.stream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.PUPPY).peek(e ->
-                System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.PUPPY).eatFood())).count();
-        colHungry = colHungry + dogList.stream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.ADULTDOG).peek(e ->
-                System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.ADULTDOG).eatFood())).count();
-        colHungry = colHungry + dogList.stream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.ELDERLYDOG).peek(e ->
-                System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.ELDERLYDOG).eatFood())).count();
-
+        if(dogList.size()>10000) {
+            colHungry = dogList.parallelStream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.PUPPY).peek(e ->
+                    System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.PUPPY).eatFood())).count();
+            colHungry = colHungry + dogList.parallelStream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.ADULTDOG).peek(e ->
+                    System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.ADULTDOG).eatFood())).count();
+            colHungry = colHungry + dogList.parallelStream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.ELDERLYDOG).peek(e ->
+                    System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.ELDERLYDOG).eatFood())).count();
+        }
+        else {
+            colHungry = dogList.stream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.PUPPY).peek(e ->
+                    System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.PUPPY).eatFood())).count();
+            colHungry = colHungry + dogList.stream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.ADULTDOG).peek(e ->
+                    System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.ADULTDOG).eatFood())).count();
+            colHungry = colHungry + dogList.stream().filter(Dog::isHungry).filter(e -> e.getAge() == Age.ELDERLYDOG).peek(e ->
+                    System.out.println(cook.getName() + ": " + cook.work(e) + ". " + e.getName() + ": " + kitchen.createFeed(Age.ELDERLYDOG).eatFood())).count();
+        }
         if (colHungry > 0) {
             System.out.println("The cook " + cook.getName() + " fed all dogs.\n");
         }

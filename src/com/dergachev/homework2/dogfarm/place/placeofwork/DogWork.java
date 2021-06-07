@@ -41,11 +41,20 @@ public class DogWork {
 
     public void goToWork(List<Dog> dogs) {
         validList(dogs);
-        dogs.stream().filter(e->e.getWork()==PlaceOFWorkDog.ARMY).peek(e->e.setHungry(true)).forEach(e-> System.out.println(getWorkPlace(e.getWork()).work(e)));
-        dogs.stream().filter(e->e.getWork()==PlaceOFWorkDog.POLICE).peek(e->e.setHungry(true)).forEach(e-> System.out.println(getWorkPlace(e.getWork()).work(e)));
-        dogs.stream().filter(e->e.getWork()==PlaceOFWorkDog.GUIDE_DOG).peek(e->e.setHungry(true)).forEach(e-> System.out.println(getWorkPlace(e.getWork()).work(e)));
-        dogs.stream().filter(e->e.getWork()==PlaceOFWorkDog.UNEMPLOYED).peek(e->e.setHungry(true)).forEach(e-> System.out.println(getWorkPlace(e.getWork()).work(e)));
-        dogs.stream().filter(e->e.getWork()==PlaceOFWorkDog.TRAINING).peek(e->e.setHungry(true)).forEach(e-> System.out.println(getWorkPlace(e.getWork()).work(e)));
+        if(dogs.size()>10000) {
+            dogs.parallelStream().filter(e -> e.getWork() == PlaceOFWorkDog.ARMY).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.parallelStream().filter(e -> e.getWork() == PlaceOFWorkDog.POLICE).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.parallelStream().filter(e -> e.getWork() == PlaceOFWorkDog.GUIDE_DOG).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.parallelStream().filter(e -> e.getWork() == PlaceOFWorkDog.UNEMPLOYED).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.parallelStream().filter(e -> e.getWork() == PlaceOFWorkDog.TRAINING).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+        }
+        else {
+            dogs.stream().filter(e -> e.getWork() == PlaceOFWorkDog.ARMY).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.stream().filter(e -> e.getWork() == PlaceOFWorkDog.POLICE).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.stream().filter(e -> e.getWork() == PlaceOFWorkDog.GUIDE_DOG).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.stream().filter(e -> e.getWork() == PlaceOFWorkDog.UNEMPLOYED).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+            dogs.stream().filter(e -> e.getWork() == PlaceOFWorkDog.TRAINING).peek(e -> e.setHungry(true)).forEach(e -> System.out.println(getWorkPlace(e.getWork()).work(e)));
+        }
         System.out.println();
     }
 

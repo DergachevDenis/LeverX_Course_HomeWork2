@@ -3,10 +3,10 @@ package com.dergachev.homework2.dogfarm.place.placeofwork.work;
 import com.dergachev.homework2.dogfarm.dog.Dog;
 
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Emergency implements WorkPlace{
-    private static final Object lock = new Object();
-
+    private static final ReentrantLock locker = new ReentrantLock();
     private static volatile Emergency emergency = null;
 
     private Emergency() {
@@ -14,10 +14,14 @@ public class Emergency implements WorkPlace{
 
     public static Emergency getEmergency() {
         if (emergency == null) {
-            synchronized (lock) {
+            locker.lock();
+            try{
                 if (emergency == null) {
                     emergency = new Emergency();
                 }
+            }
+            finally{
+                locker.unlock();
             }
         }
         return emergency;

@@ -30,8 +30,15 @@ public class VeterinaryClinic {
 
     public void inspectionDogs(List<Dog> dogList) {
         validDogList(dogList);
-        long countNoHealthy = dogList.stream().peek(e -> System.out.println("The veterinary " + veterinary.getName() + " inspected " + e.getName())).filter(e -> !e.isHealthy())
-                .peek(e -> veterinary.work(e)).count();
+        long countNoHealthy=0;
+        if(dogList.size()>10000) {
+             countNoHealthy = dogList.parallelStream().peek(e -> System.out.println("The veterinary " + veterinary.getName() + " inspected " + e.getName())).filter(e -> !e.isHealthy())
+                    .peek(e -> veterinary.work(e)).count();
+        }
+        else {
+            countNoHealthy = dogList.stream().peek(e -> System.out.println("The veterinary " + veterinary.getName() + " inspected " + e.getName())).filter(e -> !e.isHealthy())
+                    .peek(e -> veterinary.work(e)).count();
+        }
         if (countNoHealthy > 0) {
             System.out.println(veterinary.getName()+": I examined and cured all dogs!");
         }

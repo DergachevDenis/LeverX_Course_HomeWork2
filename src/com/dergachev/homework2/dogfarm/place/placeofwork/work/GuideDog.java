@@ -3,9 +3,10 @@ package com.dergachev.homework2.dogfarm.place.placeofwork.work;
 import com.dergachev.homework2.dogfarm.dog.Dog;
 
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class GuideDog implements WorkPlace {
-    private static final Object lock = new Object();
+    private static final ReentrantLock locker = new ReentrantLock();
 
     private static volatile GuideDog guideDog = null;
 
@@ -14,10 +15,14 @@ public class GuideDog implements WorkPlace {
 
     public static GuideDog getGuideDog() {
         if (guideDog == null) {
-            synchronized (lock) {
+            locker.lock();
+            try{
                 if (guideDog == null) {
                     guideDog = new GuideDog();
                 }
+            }
+            finally{
+                locker.unlock();
             }
         }
         return guideDog;
